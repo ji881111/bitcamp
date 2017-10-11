@@ -18,7 +18,8 @@ public class Test15_11_2 {
        
       Privilege p1 = new Privilege();
        
-       p1.isDirectory = false;
+       p1.isDirectory = false; 
+       
        p1.ownerRead = true;
        p1.ownerWrite = true;
        p1.ownerExe = true;
