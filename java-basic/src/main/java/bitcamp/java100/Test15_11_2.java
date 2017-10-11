@@ -15,7 +15,8 @@ public class Test15_11_2 {
            boolean otherExe;
        }
        
-       Privilege p1 = new Privilege();
+       
+      Privilege p1 = new Privilege();
        
        p1.isDirectory = false;
        p1.ownerRead = true;
