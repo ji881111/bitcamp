@@ -2,50 +2,35 @@ package bitcamp.java100;
 
 public class Test15_11_3 {
     public static void main(String[] args){
-       class Privilege {
-           boolean isDirectory;
-           boolean ownerRead;
-           boolean ownerWrite;
-           boolean ownerExe;
-           boolean groupRead;
-           boolean groupWrite;
-           boolean groupExe;
-           boolean otherRead;
-           boolean otherWrite;
-           boolean otherExe;
-       }
        
-       Privilege p1 = new Privilege();
+        int p1 = 0;
+        
+        p1 = 0b0_111_101_101;
+        final int DIRECTORY = 0x0200; //0b0010_0000_0000;
+        final int OWNER_READ = 0x0100; //0b0001_0000_0000;
+        final int OWNER_WRITE = 0x0080; //0b0000_1000_0000;
+        final int OWNER_EXE = 0x0040; //0b0000_0100_0000;
+        final int GROUP_READ = 0x0020; //0b0000_0010_0000;
+        final int GROUP_WRITE = 0x0010; //0b0000_0001_0000;
+        final int GROUP_EXE = 0x0008; //0b0000_0000_1000;
+        final int OTHER_READ = 0x0004; //0b0000_0000_0100;
+        final int OTHER_WRITE = 0x0002; //0b0000_0000_0010;
+        final int OTHER_EXE = 0x0001; //0b0000_0000_0001;
        
-       p1.isDirectory = false;
-       p1.ownerRead = true;
-       p1.ownerWrite = true;
-       p1.ownerExe = true;
-       p1.groupRead = true;
-       p1.groupWrite = false;
-       p1.groupExe = true;
-       p1.otherRead = true;
-       p1.otherWrite = false;
-       p1.otherExe = true;
-       
-      /* 
-       if(p1.isDirectory) {
-           System.out.print("d");
-       }else {
-           System.out.print("-");
-       }
-       */
-       
-       System.out.print(p1.isDirectory ? "d" : "-");
-       System.out.print(p1.ownerRead ? "r" : "-");
-       System.out.print(p1.ownerWrite ? "w" : "-");
-       System.out.print(p1.ownerExe ? "x" : "-");
-       System.out.print(p1.groupRead ? "r" : "-");
-       System.out.print(p1.groupWrite ? "w" : "-");
-       System.out.print(p1.groupExe ? "x" : "-");
-       System.out.print(p1.otherRead ? "r" : "-");
-       System.out.print(p1.otherWrite ? "w" : "-");
-       System.out.print(p1.otherExe ? "x" : "-");
+       System.out.print((p1 & DIRECTORY) == DIRECTORY ? "d" : "-");
+       System.out.print((p1 & OWNER_READ) == OWNER_READ ? "r" : "-");
+       System.out.print((p1 & OWNER_WRITE) == OWNER_WRITE ? "w" : "-");
+       System.out.print((p1 & OWNER_EXE) == OWNER_EXE ? "x" : "-");
+       System.out.print((p1 & GROUP_READ) == GROUP_READ ? "r" : "-");
+       System.out.print((p1 & GROUP_WRITE) == GROUP_WRITE ? "w" : "-");
+       System.out.print((p1 & GROUP_EXE) == GROUP_EXE ? "x" : "-");
+       System.out.print((p1 & OTHER_READ) == OTHER_READ ? "r" : "-");
+       System.out.print((p1 & OTHER_WRITE) == OTHER_WRITE ? "w" : "-");
+       System.out.print((p1 & OTHER_EXE) == OTHER_EXE ? "x" : "-");
        System.out.println();
+       
+       
+       
+       
     }    
 }
