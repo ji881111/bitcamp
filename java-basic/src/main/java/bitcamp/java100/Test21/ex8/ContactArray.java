@@ -16,7 +16,7 @@ public class ContactArray {
 
     static Contact get(int index) {
         if (index < 0 || index >= cursor)
-            throw new RuntimeException("유호하지 않은 인덱스");
+            throw new RuntimeException("유효하지 않은 인덱스");
 
         return contacts[index];
     }
