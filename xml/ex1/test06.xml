@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 루트태그 -->
+
+<students>
+    
+    <student></student>
+    <!--  
+    < student></student>
+    <student></ student>
+    -->
+     <student></student     >
+    <student     ></student>
+    
+        <firstName></firstName>
+        <first_name></first_name>
+        <first-name></first-name>
+        
+        <!-- 태그명에는 공백 노노
+        <first name></first name> --> 
+        
+        <!-- 대소문자 구분함 -->
+        <!--  오류예 <firstName></FirstName> -->
+        
+        <_name> </_name>
+        <last-name></last-name>
+        <name2></name2>
+        
+        <!-- 
+        <7name></7name>
+         -->
+        
+  
+    
+    
+</students>
+

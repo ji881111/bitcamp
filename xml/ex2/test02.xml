@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 엘리먼트 규칙 정의-->
+
+<!DOCTYPE books [
+<!ELEMENT books (#PCDATA)>
+]>
+
+<books2></books2>

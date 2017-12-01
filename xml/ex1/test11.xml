@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 태그(tag)와 엘리먼트(element)-->
+
+<books>
+    <book>
+        <title>오호라 이것이 자바다!</title>
+        <author>비트캠프</author>
+        <page>897</page>
+        <isbn>2342342k23k23</isbn>
+        <language>한국</language>
+        <press>비트출판사</press>
+        <description>자바기초서.짱이에요!</description>
+    </book>
+</books>

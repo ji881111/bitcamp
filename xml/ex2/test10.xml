@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 엘리먼트 타입 -->
+
+<!DOCTYPE books [
+<!ELEMENT items (book|dvd)*>
+<!ELEMENT book (title,author+,press,page,description?,photo*,(cd|tape|usb)?)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT press (#PCDATA)>
+<!ELEMENT page (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT photo (#PCDATA)>
+<!ELEMENT cd EMPTY>
+<!ELEMENT tape EMPTY>
+<!ELEMENT usb EMPTY>
+<!ELEMENT dvd (title,price)>
+<!ELEMENT price (#PCDATA)>
+]>
+
+<items>
+    <book>
+        <title>aaaa</title>
+        <author>bbbb</author>
+        <press>cccc</press>
+        <page>300</page>
+    </book>
+    <dvd>
+        <title>aaaa</title>
+        <price>20000</price>
+    </dvd>
+     <book>
+        <title>aaaa</title>
+        <author>bbbb</author>
+        <press>cccc</press>
+        <page>300</page>
+    </book>
+</items>
+    

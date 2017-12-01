@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 내부DTD 작성 예
+<!DOCTYPE 루트태그명 [ 규칙...]>
+
+
+-->
+
+<!DOCTYPE books []>
+
+<books></books>

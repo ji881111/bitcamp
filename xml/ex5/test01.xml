@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 네임스페이스 
+-태그를 그룹으로 묶을때 사용하는 문법
+-->
+
+<b:books xmlns:b="http://bitcamp.co.kr/java100/book"
+         xmlns:a="http://bitcamp.co.kr/java100/author"
+         xmlns:p="http://bitcamp.co.kr/java100/press">
+
+    <a:author a:id ="a001" a:name="홍길동"/>
+    <a:author a:id ="a002" a:name="임꺽정"/>
+    <a:author a:id ="a003" a:name="유관순"/>
+    
+    <p:press p:id="p001" b:name="비트출판사"/>
+    <p:press p:id="p002" b:name="위키북스"/>
+    <p:press p:id="p003" b:name="프리렉"/>
+    
+    <b:book b:name="aaaa" b:press="p001" b:author="a003"/>
+    
+</b:books>
+   

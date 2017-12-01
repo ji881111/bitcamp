@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- CDATA 섹션 -->
+
+<tests>
+<!-- 다음 태그 내용중 꺽쇠 '<' 문자가 있음, XML파서(parser:해석기)는 
+태그로 간주하고 문법을 검사함-->
+<!-- 
+    <question no="1">
+    다음코드의 실행 결과는?
+    int a =20;
+    if(a < 14)
+        System.out.println("어린이");
+    else if(a >= 14 && a < 19)
+        System.out.println("청소년");
+    </question>
+     -->
+     
+     <!-- 위 문제 해결을 위해 CDATA 섹션 필요 / XML파서가 그냥 텍스트로 취급-->
+     <![CDATA[
+      <question no="1">
+    다음코드의 실행 결과는?
+    int a =20;
+    if(a < 14)
+        System.out.println("어린이");
+    else if(a >= 14 && a < 19)
+        System.out.println("청소년");
+    </question>
+    ]]>
+    
+    
+    <select>
+    <![CDATA[
+        select no, name from student where age > 13 and age < 19
+    ]]>
+    </select>
+   
+     
+</tests>

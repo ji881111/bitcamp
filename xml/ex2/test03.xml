@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 엘리먼트 타입-문자열 -->
+
+<!DOCTYPE books [
+<!ELEMENT books (#PCDATA)>
+]>
+<!-- 
+<books><book></book></books> -->
+
+<!--  (#PCDATA) 텍스트가와야 하는데 자식 태그가 와서 오류 -->

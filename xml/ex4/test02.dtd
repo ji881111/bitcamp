@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!ENTITY % string "CDATA #REQUIRED">
+
+<!ENTITY % coreattrs " 
+    name  %string;
+    id  ID    #REQUIRED "
+>
+<!ELEMENT items (author*,press*,book*)>
+<!ELEMENT book (#PCDATA)>
+<!ATTLIST book
+    title   %string;
+    author  IDREFS #REQUIRED 
+    press   IDREF  #REQUIRED  
+>
+<!ELEMENT author (#PCDATA)>
+<!ATTLIST author
+   %coreattrs;
+>
+<!ELEMENT press (#PCDATA)>
+<!ATTLIST press
+   %coreattrs;
+>

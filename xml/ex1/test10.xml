@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 속성 (attribute)
+-시작 태그안에 작성하는 데이터
+ -->
+
+<books>
+    <!-- 태그만으로 책 정보 표현 -->
+    <book>
+        <title>오호라 이것이 자바다!</title>
+        <author>비트캠프</author>
+        <page>897</page>
+        <isbn>2342342k23k23</isbn>
+        <language>한국</language>
+        <press>비트출판사</press>
+        <description>자바기초서.짱이에요!</description>
+    </book>
+    
+    <!-- 속성만으로 책 정보 표현 -->
+    <book title="오호라 이것이 자바다!"
+          author="비트캠프"
+          page="897"
+          isbn="2342342k23k23"
+          language="한국"
+          press="비트출판사"
+          description="자바기초서.짱이에요!"/>
+          
+    <!-- 각자 편하거 쓰면됨 -->
+    
+    <!-- 태그와 속성을 호합하여 책 정보 표현  -->
+    <book isbn="2342342k23k23" language="한국">
+        <title>오호라 이것이 자바다!</title>
+        <author>비트캠프</author>
+        <page>897</page>
+        <language>한국</language>
+        <press>비트출판사</press>
+        <description>자바기초서.짱이에요!</description>
+    </book>
+    
+</books>
+
+
