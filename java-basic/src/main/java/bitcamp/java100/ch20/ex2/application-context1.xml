@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+   
+    <!--  String s1 = new String() -->
+    <!-- bean 태그 : 인스턴스 생성 명령어 
+        id 속성 : 인스턴스를 생성한 후 저장할 때 사용할 이름 
+        class 속성 : 패키지 이름을 포함한 클래스 이름(fully-qualifies name=QName)-->
+   
+    <bean id = "s1" class ="java.lang.String"/>
+    
+    <!-- name 속성 -id 속성 지정안한 -->
+    
+    <bean name="s2" class="java.lang.String"/>
+    
+    <!-- id나 name 속성의 값은 중복될 수 없다 
+    <bean name="s2" class="java.lang.String"/> 오류! -->
+    
+    <!-- id나 name 속성값이 같으면 id값이 객체의 이름으로 사용됨 -->
+    <bean id="s3" name="s3" class="java.lang.String"/>
+    
+    <!-- <bean id ="s4" name="s5 s6" class="java.lang.String"/> -->
+    
+    <bean id ="s4" name="s5;s6" class="java.lang.String"/>
+    
+    <bean id ="s7 s8 s9" class="java.lang.String"/>
+    
+    <bean name ="s10 s11 s12" class="java.lang.String"/>
+    
+      <bean class="java.lang.String"/>
+      <bean class="java.lang.String"/>
+      <bean class="java.lang.String"/>
+    
+</beans>

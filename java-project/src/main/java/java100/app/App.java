@@ -1,71 +1,143 @@
-
 package java100.app;
 
-import java.util.Scanner;
- 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+import java100.app.control.Controller;
+import java100.app.control.Request;
+import java100.app.control.Response;
+import java100.app.util.DataSource;
+
+@Configuration
+@ComponentScan("java100.app")
+
 public class App {
+
+    ServerSocket ss;
     
-    static Scanner keyScan = new Scanner(System.in);
-    static ScoreController scoreController = new ScoreController();
-    static MemberController memberController = new MemberController();
-    static BoardController boardController = new BoardController();
+    AnnotationConfigApplicationContext iocContainer;
+
+    @Bean
+    DataSource getDataSource() {
+        DataSource ds = new DataSource();
+        ds.setDriverClassName("com.mysql.jdbc.Driver");
+        ds.setUrl("jdbc:mysql://localhost:3306/studydb");
+        ds.setUsername("study");
+        ds.setPassword("1111");
+        return ds;
+    }
     
-    public static void main(String[] args) {
+    void init() {
         
-        loop:
-        while (true) {
-            System.out.print("명령> ");
-            String[] input = keyScan.nextLine().toLowerCase().split(" ");
-            
-            try {
-                switch (input[0]) {
-                case "menu": doMenu(); break;
-                case "help": doHelp(); break;
-                case "quit": doQuit(); break loop;
-                case "go": doGo(input[1]); break;
-                default:
-                    doError();
-                }
-            } catch (Exception e) {
-                System.out.println("명령 처리 중 오류 발생!");
-                e.printStackTrace();
-            }
-            System.out.println();
-        } // while
+        iocContainer = new AnnotationConfigApplicationContext(App.class);
         
     }
     
-    private static void doGo(String menuNo) {
+    void service() throws Exception {
+        ss = new ServerSocket(9999);
+        System.out.println("서버 실행!");
         
-        switch (menuNo) {
-        case "1": scoreController.execute(); break;
-        case "2": memberController.execute(); break;
-        case "3": boardController.execute(); break;
-        default:
-            System.out.println("해당 번호의 메뉴가 없습니다.");
+        while (true) {
+            new HttpAgent(ss.accept()).start();
+        }
+    }
+
+    private void request(String command, PrintWriter out) {
+
+        String menuName = command;
+
+        int i = command.indexOf("/", 1);
+        if (i != -1) {
+            menuName = command.substring(0, i);
+        }
+
+        Object controller = iocContainer.getBean(menuName);
+
+        if (controller == null && controller instanceof Controller) {
+            out.println("해당 명령을 지원하지 않습니다.");
+            return;
+        }
+
+        Request request = new Request(command);
+        
+        Response response = new Response();
+        response.setWriter(out);
+        
+        ((Controller)controller).execute(request, response);
+    }
+
+    private void hello(String command, PrintWriter out) {
+        out.println("안녕하세요. 성적관리 시스템입니다.");
+        out.println("[성적관리 명령들]");
+        out.println("목록보기: /score/list");
+        out.println("상세보기: /score/view?name=이름");
+        out.println("등록: /score/add?name=이름&kor=점수&eng=점수&math=점수");
+        out.println("변경: /score/update?name=이름&kor=점수&eng=점수&math=점수");
+        out.println("삭제: /score/delete?name=이름");
+        out.println("[회원]");
+        out.println("[게시판]");
+        out.println("[강의실]");
+
+    }
+
+    public static void main(String[] args) throws Exception {
+        App app = new App();
+        app.init();
+        app.service();
+    }
+    
+    class HttpAgent extends Thread {
+        Socket socket;
+        
+        public HttpAgent(Socket socket) {
+            this.socket = socket;
         }
         
+        @Override
+        public void run() {
+            try (
+                    Socket socket = this.socket; // 왜? 자동 close() 호출!
+                    BufferedReader in = new BufferedReader(
+                            new InputStreamReader(socket.getInputStream()));
+                    PrintWriter out = new PrintWriter(
+                            new BufferedOutputStream(socket.getOutputStream()));
+                    ) {
+                String command = in.readLine().split(" ")[1];
+
+                String header = null;
+                while (true) {
+                    header = in.readLine();
+                    if (header.equals("")) // 빈 줄을 만나면 요청 데이터의 끝!
+                        break;
+                }
+                
+                out.println("HTTP/1.1 200 OK");
+                
+                out.println("Content-Type:text/plain;charset=UTF-8");
+                
+                out.println();
+                
+                if (command.equals("/")) {
+                    hello(command, out);
+                } else {
+                    request(command, out);
+                }
+                out.println(); // 응답을 완료를 표시하기 위해 빈줄 보냄.
+                out.flush();
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    private static void doHelp() {
-        System.out.println("[명령]");
-        System.out.println("menu        - 메뉴 목록 출력한다.");
-        System.out.println("go 번호     - 메뉴로 이동한다.");
-        System.out.println("quit        - 프로그램을 종료한다.");
-    }
-
-    private static void doMenu() {
-        System.out.println("1 성적관리");
-        System.out.println("2 회원관리");
-        System.out.println("3 게시판");
-    }
-
-    private static void doError() {
-        System.out.println("실행할 수 없는 명령입니다.");
-    }
-
-    private static void doQuit() {
-        System.out.println("프로그램을 종료합니다.");
-    }
-        
 }
