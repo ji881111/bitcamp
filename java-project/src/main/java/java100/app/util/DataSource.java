@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DataSource{
+public class DataSource {
 
     private String driverClassName;
     private String url;
@@ -33,6 +33,16 @@ public class DataSource{
                 return;
             list.add(con);
         } catch (Exception e) {
+        }
+    }
+
+    synchronized public void close() {
+
+        for (Connection con : list) {
+            try {
+                con.close();
+            } catch (Exception e) {
+            }
         }
     }
 
