@@ -1,18 +1,30 @@
-
 package java100.app;
+
+import java.lang.reflect.Method;
+import java.util.List;
+
+import org.reflections.ReflectionUtils;
 
 public class Test {
 
-    public static void main(String[] args) {
-        String[] path = 
-                "/score/add?name=aaa&kor=100&eng=100".split("\\?");
+    static void m(int a, int b, int c) {
         
-        String[] arr = path[1].split("&");
-        for (String param : arr) {
-            String[] kv = param.split("=");
-            System.out.printf("%s : %s\n", kv[0], kv[1]);
-        }
-
+    }
+    
+    public static void main(String[] args) {
+        String name = "FirstName";
+        
+        String propName = String.format("%c%s", 
+                Character.toLowerCase(name.charAt(0)),
+                name.substring(1));
+        
+        System.out.println(propName);
     }
 
 }
+
+
+
+
+
+

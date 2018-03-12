@@ -1,13 +1,28 @@
 package java100.app.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import java100.app.domain.Room;
 
 public interface RoomDao {
-    
-    public List<Room> selectList(); 
-    public int insert(Room room); 
-    public int delete(int no); 
-
+    List<Room> findAll(Map<String,Object> params);
+    int countAll();
+    int insert(Room room);
+    int delete(int no);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

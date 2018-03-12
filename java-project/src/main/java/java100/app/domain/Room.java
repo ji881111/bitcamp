@@ -9,18 +9,17 @@ public class Room {
     public Room() {}
     
     public Room(int no, String location, String name, int capacity) {
+        this.no = no;
         this.location = location;
         this.name = name;
         this.capacity = capacity;
     }
     
-
     @Override
     public String toString() {
-        return "Room [location=" + location + ", name=" + name + ", capacity=" + capacity + "]";
+        return "Room [no=" + no + ", location=" + location + ", name=" + name + ", capacity=" + capacity + "]";
     }
-    
-  
+
     public int getNo() {
         return no;
     }

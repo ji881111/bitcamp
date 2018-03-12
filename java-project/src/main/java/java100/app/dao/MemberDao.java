@@ -1,14 +1,32 @@
 package java100.app.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import java100.app.domain.Member;
 
 public interface MemberDao {
-
-    public List<Member> selectList(); 
-    public int insert(Member member); 
-    public int update(Member member); 
-    public int delete(int no); 
-    public Member selectOne(int no); 
+    List<Member> findAll(Map<String,Object> params);
+    Member findByNo(int no);
+    int countAll();
+    Member findByEmailAndPassword(Map<String,Object> params);
+    Member findByEmail(String email);
+    int insert(Member member);
+    int update(Member member);
+    int delete(int no);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1 id ="time"></h1>
+<!-- 웹브라우저 빌트인 객체 -->
+<script type="text/javascript">
+//타이머
+
+window.setTimeout(function(){
+    window.alert("안녕, 시간이 되었네여")
+    //window.location.href="http://www.daum.net";
+}, 5000);
+
+
+window.setInterval(function(){
+   //console.log("ㅋㅋㅋ")
+   var tag = window.document.getElementById("time");
+   var today = new Date();
+   tag.innerHTML = today.getFullYear() +"-"+(today.getMonth()+1)+"-"+
+   today.getDate() + " "+today.getHours()+":"+today.getMinutes()+":"+
+   today.getSeconds();
+   }, 1000);
+</script>
+
+
+</body>
+</html>

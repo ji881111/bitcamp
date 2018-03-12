@@ -1,7 +1,7 @@
 package java100.app.domain;
 
-public class Score {
-
+public class Score {  
+    
     protected int no;
     protected String name;
     protected int kor;
@@ -10,26 +10,24 @@ public class Score {
     protected int sum;
     protected float aver;
 
-    public Score() {
-    }
-
+    public Score() {}
+    
     public Score(int no, String name, int kor, int eng, int math) {
         this.no = no;
         this.name = name;
         this.kor = kor;
         this.eng = eng;
         this.math = math;
-
+        
         this.compute();
     }
-
+    
     @Override
     public String toString() {
-        return "Score [name=" + name + ", kor=" + kor + ", eng=" + eng + ", math=" + math + ", sum=" + sum + ", aver="
-                + aver + "]";
+        return "Score [no=" + no + ", name=" + name + ", kor=" + kor + ", eng=" + eng + ", math=" + math + ", sum="
+                + sum + ", aver=" + aver + "]";
     }
 
-    
     public int getNo() {
         return no;
     }
@@ -85,5 +83,5 @@ public class Score {
         this.sum = this.kor + this.eng + this.math;
         this.aver = this.sum / 3f;
     }
-
+    
 }
